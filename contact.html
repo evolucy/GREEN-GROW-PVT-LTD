@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact | GREEN GROW</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6">
+  <nav><a href="index.html">Home</a> | <a href="signup.html">Sign Up</a></nav>
+  <h2 class="text-2xl font-bold">Contact Support</h2>
+  <form id="contactForm" class="mt-4">
+    <input id="cname" placeholder="Name" class="border p-2 w-full"/><br/><br/>
+    <input id="cemail" placeholder="Email" class="border p-2 w-full"/><br/><br/>
+    <textarea id="cmsg" placeholder="Message" class="border p-2 w-full"></textarea><br/><br/>
+    <button type="button" onclick="sendMsg()" class="px-4 py-2 bg-green-600 text-white rounded">Send</button>
+  </form>
+  <script>
+    function sendMsg(){
+      alert('Demo: contact sent (no backend).');
+    }
+  </script>
+</body>
+</html>
