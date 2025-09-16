@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard | GREEN GROW</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6">
+  <nav class="mb-4">
+    <a href="index.html">Home</a> |
+    <a href="rewards.html">Rewards</a> |
+    <a href="leaderboard.html">Leaderboard</a> |
+    <a href="contact.html">Contact</a>
+  </nav>
+  <h2 class="text-2xl font-bold">Dashboard</h2>
+  <div id="profile" class="mt-4"></div>
+  <script>
+    async function loadProfile(){
+      const token = localStorage.getItem('token');
+      if(!token) { window.location.href='login.html'; return; }
+      const resp = await fetch('/api/user/me', {headers:{'Authorization':'Bearer '+token}});
+      if(resp.ok){
+        const data = await resp.json();
+        document.getElementById('profile').innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+      } else {
+        localStorage.removeItem('token'); window.location.href='login.html';
+      }
+    }
+    loadProfile();
+  </script>
+</body>
+</html>
